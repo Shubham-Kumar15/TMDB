@@ -1,6 +1,7 @@
 package com.example.tmdb
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,9 @@ class MyAdapter(private var context:Context,private var list:List<Movies>): Recy
         val m=list.get(position);
         holder.text1.setText(m.original_title);
         holder.text2.setText(m.overview);
-        Glide.with(context).load(m.poster_path).into(holder.image);
+        val te:String=TMDB.baseImage+m.poster_path;
+        Glide.with(context).load(te).into(holder.image);
+        Log.e("Image Loading API",te);
     }
 
     override fun getItemCount(): Int {

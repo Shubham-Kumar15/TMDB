@@ -10,7 +10,7 @@ public class Movies {
         this.release_date = release_date;
         this.original_title = original_title;
         this.id = id;
-        poster_path=TMDB.baseImage+poster_path;
+        //this.poster_path=TMDB.baseImage+poster_path;
     }
 
     @Override
