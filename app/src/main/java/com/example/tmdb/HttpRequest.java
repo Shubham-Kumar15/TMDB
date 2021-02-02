@@ -12,13 +12,12 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
-public class HttpTrials {
-    private static HttpURLConnection connection;
-    public static List<Movies> Methord1(){
+public class HttpRequest {
+    private  HttpURLConnection connection;
+    public  List<Movies> Methord1(){
         //java.net.HttpUrlConnection
         BufferedReader br;
         StringBuffer sb=new StringBuffer();
-
         try {
             TMDB tmdb=new TMDB(1);
             URL url=new URL(tmdb.getAPI());
@@ -37,8 +36,8 @@ public class HttpTrials {
                 }
                 Gson gson=new Gson();
                 Result result=gson.fromJson(sb.toString(),Result.class);
-                for(Movies m:result.results)
-                    System.out.println(m.toString());
+//                for(Movies m:result.results)
+//                    System.out.println(m.toString());
                 return result.results;
             }else{
                 br=new BufferedReader(new InputStreamReader(connection.getErrorStream()));
@@ -47,7 +46,7 @@ public class HttpTrials {
                     sb.append(li);
                     li=br.readLine();
                 }
-                System.out.println(sb);
+                //System.out.println(sb);
             }
         }
 

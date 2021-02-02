@@ -1,13 +1,15 @@
 package com.example.tmdb
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
-class MyAdapter(private var list:List<Movies>): RecyclerView.Adapter<MyAdapter.MovieTab>() {
+class MyAdapter(private var context:Context,private var list:List<Movies>): RecyclerView.Adapter<MyAdapter.MovieTab>() {
     public class MovieTab(item:View) : RecyclerView.ViewHolder(item){
         var image:ImageView=item.findViewById(R.id.imageView);
         var text1:TextView=item.findViewById(R.id.textViewMain);
@@ -23,6 +25,7 @@ class MyAdapter(private var list:List<Movies>): RecyclerView.Adapter<MyAdapter.M
         val m=list.get(position);
         holder.text1.setText(m.original_title);
         holder.text2.setText(m.overview);
+        Glide.with(context).load(m.poster_path).into(holder.image);
     }
 
     override fun getItemCount(): Int {
